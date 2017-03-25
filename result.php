@@ -31,7 +31,7 @@
             foreach($routeResult  as $key => $val) {				
                 $route_result[$key] = $val;
             }
-   
+            
             $memcache->set('route', $route_result, MEMCACHE_COMPRESSED, 0);
             
             //echo "<br/>this is NOT cached<br/>";
@@ -50,12 +50,12 @@
 
     if(isset($_REQUEST["route"])) {
         $route = $_REQUEST["route"];
-        $trips_cache_result = $memcache->get('trips_' . $route); // Memcached object 
+        $trips_cache_result = $memcache->get('trips_' . $route . '_' . $_REQUEST["intersection1"] . '_' . $_REQUEST["intersection2"]); // Memcached object 
         $trips_result = array();
         
         if($trips_cache_result) {
             $trips_result = $trips_cache_result;
-            //echo "<br/>this is cached<br/>";
+            echo "this is cached<br/>";
         } else {
             if(isset($_REQUEST["intersection1"])) { 
                 $intersection1 = ' and stop_name LIKE "%' . $_REQUEST["intersection1"] . '%"';
@@ -79,9 +79,9 @@
                 }
                 
                 // Key, Array, Compressed, seconds
-                $memcache->set('trips_' . $route, $trips_result, MEMCACHE_COMPRESSED, 0);
+                $memcache->set('trips_' . $route . '_' . $_REQUEST["intersection1"] . '_' . $_REQUEST["intersection2"], $trips_result, MEMCACHE_COMPRESSED, 0);
                 
-                //echo "<br/>this is NOT cached<br/>";
+                echo "this is NOT cached<br/>";
             } else {
                 echo "No Result";
             }

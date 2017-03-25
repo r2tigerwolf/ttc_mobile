@@ -42,7 +42,7 @@
 
             <div id="tripSearch" data-role="fieldcontain">
                 <form class="ui-filterable">
-                    <input type="text" id="tripName" name="tripName"  data-type="search" placeholder="Search bus stop..." />
+                    <input type="text" id="tripName" name="tripName"  data-type="search" placeholder="Filter result..." />
                 </form>
             </div>
             <ul id="tripResult" data-role="listview" data-filter="true" data-inset="true" data-input="#tripName"></ul>
