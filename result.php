@@ -34,10 +34,10 @@
    
             $memcache->set('route', $route_result, MEMCACHE_COMPRESSED, 100);
             
-            echo "<br/>this is NOT cached<br/>";
+            //echo "<br/>this is NOT cached<br/>";
         }
     
-        //$memcache->flush(0);
+        $memcache->flush(0);
     
 
         foreach($route_result  as $key => $val) {
@@ -97,7 +97,6 @@
             echo "<br />";
             //echo ', Coordinates: ' . $val['stop_lat'] . ' ' . $val['stop_lon'] . '<br />';
             echo $val['stop_name'];
-            echo '<br /><br />';
             echo '</li>';  
         }
  

@@ -7,12 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no, user-scalable=0"/>
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/ttc.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 <title>TTC Mobile</title>
 </head>
 
@@ -36,7 +37,7 @@
                 <input type="text" id="intersection1" name="intersection1" placeholder="Enter Intersection" />
                 and
                 <input type="text" id="intersection2" name="intersection2" placeholder="Enter Intersection" />
-                <input type="button" id="submitIntersection" value="Find Trip" />
+                <input type="button" id="submitIntersection" value="Find Nearby Bus Stops" />
             </div>
 
             <div id="tripSearch" data-role="fieldcontain">
@@ -44,7 +45,7 @@
                     <input type="text" id="tripName" name="tripName"  data-type="search" placeholder="Search bus stop..." />
                 </form>
             </div>
-            <ul id="tripResult" data-role="listview" data-inset="true" data-input="#tripName"></ul>
+            <ul id="tripResult" data-role="listview" data-filter="true" data-inset="true" data-input="#tripName"></ul>
         </div>
  
         <div data-role="footer">
