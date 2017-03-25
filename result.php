@@ -32,12 +32,12 @@
                 $route_result[$key] = $val;
             }
    
-            $memcache->set('route', $route_result, MEMCACHE_COMPRESSED, 100);
+            $memcache->set('route', $route_result, MEMCACHE_COMPRESSED, 0);
             
             //echo "<br/>this is NOT cached<br/>";
         }
     
-        $memcache->flush(0);
+        //$memcache->flush(0);
     
 
         foreach($route_result  as $key => $val) {
@@ -79,7 +79,7 @@
                 }
                 
                 // Key, Array, Compressed, seconds
-                $memcache->set('trips_' . $route, $trips_result, MEMCACHE_COMPRESSED, 100);
+                $memcache->set('trips_' . $route, $trips_result, MEMCACHE_COMPRESSED, 0);
                 
                 //echo "<br/>this is NOT cached<br/>";
             } else {
