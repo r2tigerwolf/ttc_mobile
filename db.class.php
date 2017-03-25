@@ -13,16 +13,17 @@
    
     class Bus {
         private $result;
-
-        public function select($conn, $row, $table, $join, $where, $sort, $limit) {
-            if($where) {
-                $where = ' WHERE ' . $where;
+        
+        public function select($sqlArray) {
+            
+            if($sqlArray['where']) {
+                $sqlArray['where'] = ' WHERE ' . $sqlArray['where'];
             }
             
-            $sql = 'SELECT ' . $row . ' FROM `' . $table . '` ' . $join . $where . ' ' . $sort . ' ' . $limit;
+            $sql = 'SELECT ' . $sqlArray['rows'] . ' FROM `' . $sqlArray['table'] . '` ' . $sqlArray['join'] . $sqlArray['where'] . ' ' . $sqlArray['order'] . ' ' . $sqlArray['limit'];
         
-            $result =  $conn->query($sql);
-            $keyResult = $conn->query($sql);
+            $result =  $sqlArray['conn']->query($sql);
+            $keyResult = $sqlArray['conn']->query($sql);
 
             if($result->num_rows) {
                 $busInfo = array_keys($keyResult->fetch_assoc());
@@ -35,11 +36,11 @@
                     $i++;
                 }
                 
-                mysqli_close($conn);
+                mysqli_close($sqlArray['conn']);
                 return $this->result; 
             }
             else {
-                mysqli_close($conn);
+                mysqli_close($sqlArray['conn']);
                 return false; 
             }
         }
