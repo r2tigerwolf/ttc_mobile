@@ -20,7 +20,7 @@
         $route_cache_result = $memcache->get('route');
     
         if($route_cache_result) {
-            $route_result = $route_cache_result;
+            $routeResult = $route_cache_result;
             //echo "<br/>this is cached<br/>";
         } else {
             $sqlArray = array('conn' => $busConn, 'rows' => '*', 'table' => 'bus_view', 'join' => '', 'where' => '', 'order' => '', 'limit' => '');
