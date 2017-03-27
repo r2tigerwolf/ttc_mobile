@@ -12,10 +12,19 @@ $(function() {
         $("#routeResult").hide();
     });
     
+    
+    function loading(showOrHide) {
+        setTimeout(function(){
+            $.mobile.loading(showOrHide);
+        }, 1); 
+    }
+       
+    
     $(document).on("click", "#submitIntersection", function () {
         var intersection1 = $("#intersection1").val();
         var intersection2 = $("#intersection2").val();
-        
+                
+        loading('show');
         
         $.ajax({
             type: "POST",
@@ -28,6 +37,7 @@ $(function() {
                 $("#routeResult").hide();
                 $("#tripSearch").show();
                 $("#tripResult").listview('refresh');
+                loading('hide');
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 console.log("Status: " + textStatus); 
@@ -35,8 +45,8 @@ $(function() {
             } 
         });
     });
-
     
+ 
     window.onload = function(){
         var route = $(this).attr("route");
         var routeName = $(this).attr("routename");
